@@ -1,0 +1,5 @@
+Flask>=2.0.0
+flask_healthz>=1.0.0
+gunicorn>=19.7.1
+grpcio>=1.33.1
+grpcio-tools>=1.33.1

@@ -1,0 +1,22 @@
+{{- $clusterType := include "simple-quiz.clusterType" . -}}
+{{- if and (.Values.ingress.enabled) (eq $clusterType "kubernetes") -}}
+{{- $fullName := include "simple-quiz.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}
+  namespace: {{.Release.Namespace}}
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/{{ $fullName }}`)
+    middlewares:
+    - name: {{ $fullName }}-add-trailing-slash
+    - name: {{ $fullName }}-stripprefix
+    services:
+    - name: {{ $fullName }}
+      port: {{ $svcPort }}
+{{- end }}

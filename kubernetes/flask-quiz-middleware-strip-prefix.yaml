@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: simple-quiz-stripprefix
+  namespace: simple-quiz
+spec:
+  stripPrefix:
+    prefixes:
+      - /simple-quiz

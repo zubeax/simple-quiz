@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simple-quiz-ingressroute
+  namespace: simple-quiz
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/simple-quiz`)
+    middlewares:
+    - name: simple-quiz-add-trailing-slash
+    - name: simple-quiz-stripprefix
+    services:
+    - name: simple-quiz
+      port: 8000

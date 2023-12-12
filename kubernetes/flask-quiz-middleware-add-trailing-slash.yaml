@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: simple-quiz-add-trailing-slash
+  namespace: simple-quiz
+spec:
+  redirectRegex:
+    regex: ^.*/simple-quiz$
+    replacement: /simple-quiz/

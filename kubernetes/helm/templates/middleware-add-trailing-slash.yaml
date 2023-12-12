@@ -1,0 +1,13 @@
+{{- $clusterType := include "simple-quiz.clusterType" . -}}
+{{- if and (.Values.ingress.enabled) (eq $clusterType "kubernetes") -}}
+{{- $fullName := include "simple-quiz.fullname" . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ $fullName }}-add-trailing-slash
+  namespace: {{.Release.Namespace}}
+spec:
+  redirectRegex:
+    regex: ^.*/{{ $fullName }}$
+    replacement: /{{ $fullName }}/
+{{- end }}
