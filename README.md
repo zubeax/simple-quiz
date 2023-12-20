@@ -4,7 +4,7 @@ This is a proof-of-concept project that demonstrates the sequence of steps requi
 
 The details for the workflow are covered in my Blog Article
 
-[Building and Deploying our own Images](https://zubeax.github.io/posts/2023-12-12-rolling-our-own-docker-images.html)
+[Building and Deploying our own Images](https://blog.smooth-sailing.net/kubernetes/docker/imagebuild/2023-12-12-rolling-our-own-docker-images/)
 
 If you want to run through this exercise, clone the repository into your k3s environment with
 
